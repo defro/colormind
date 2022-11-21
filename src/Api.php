@@ -32,7 +32,7 @@ class Api
         if ($response->getStatusCode() !== 200) {
             throw new ColorMindException(
                 sprintf('Bad status code : could not connect to %s', $uri),
-                $response->getStatusCode()
+                $response->getStatusCode() ?? 0
             );
         }
 
@@ -55,7 +55,7 @@ class Api
         if ($response->getStatusCode() !== 200) {
             throw new ColorMindException(
                 sprintf('Bad status code : could not connect to %s', $uri),
-                $response->getStatusCode()
+                $response->getStatusCode() ?? 0
             );
         }
 
@@ -76,8 +76,7 @@ class Api
 
         if (json_last_error() !== JSON_ERROR_NONE) {
             throw new ColorMindException(
-                sprintf('Input is not a valid JSON: %s', json_last_error_msg()),
-                0
+                sprintf('Input is not a valid JSON: %s', json_last_error_msg())
             );
         }
 
@@ -95,7 +94,7 @@ class Api
         if ($response->getStatusCode() !== 200) {
             throw new ColorMindException(
                 sprintf('Bad status code : could not connect to %s', $uri),
-                $response->getStatusCode()
+                $response->getStatusCode() ?? 0
             );
         }
 
