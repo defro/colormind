@@ -25,7 +25,7 @@ class Api
      */
     public function getModels(): string
     {
-        $uri = $this->endpointUri.'/list';
+        $uri = $this->endpointUri.'/list/';
 
         $response = $this->client->get($uri);
 
@@ -48,7 +48,7 @@ class Api
      */
     public function getRandomPalette(string $modelName = 'default'): string
     {
-        $uri = $this->endpointUri.'/api';
+        $uri = $this->endpointUri.'/api/';
 
         $response = $this->client->post($uri, [RequestOptions::JSON => ['model' => $modelName]]);
 
@@ -87,7 +87,7 @@ class Api
             ],
         ];
 
-        $uri = $this->endpointUri.'/api';
+        $uri = $this->endpointUri.'/api/';
 
         $response = $this->client->post($uri, $options);
 
