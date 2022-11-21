@@ -8,7 +8,7 @@ use GuzzleHttp\RequestOptions;
 
 class Api
 {
-    /** @var string  */
+    /** @var string */
     private string $endpointUri = 'http://colormind.io';
 
     /**
@@ -19,12 +19,13 @@ class Api
     }
 
     /**
-     * @return string
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return string
      */
     public function getModels(): string
     {
-        $uri = $this->endpointUri . '/list';
+        $uri = $this->endpointUri.'/list';
 
         $response = $this->client->get($uri);
 
@@ -40,12 +41,14 @@ class Api
 
     /**
      * @param string $modelName
-     * @return string
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return string
      */
     public function getRandomPalette(string $modelName = 'default'): string
     {
-        $uri = $this->endpointUri . '/api';
+        $uri = $this->endpointUri.'/api';
 
         $response = $this->client->post($uri, [RequestOptions::JSON => ['model' => $modelName]]);
 
@@ -60,10 +63,12 @@ class Api
     }
 
     /**
-     * @param array $input
+     * @param array  $input
      * @param string $modelName
-     * @return string
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return string
      */
     public function getColorSuggestions(array $input, string $modelName = 'default'): string
     {
@@ -71,7 +76,8 @@ class Api
 
         if (json_last_error() !== JSON_ERROR_NONE) {
             throw new ColorMindException(
-                sprintf('Input is not a valid JSON: %s', json_last_error_msg()), 0
+                sprintf('Input is not a valid JSON: %s', json_last_error_msg()),
+                0
             );
         }
 
@@ -82,7 +88,7 @@ class Api
             ],
         ];
 
-        $uri = $this->endpointUri . '/api';
+        $uri = $this->endpointUri.'/api';
 
         $response = $this->client->post($uri, $options);
 
