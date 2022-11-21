@@ -12,7 +12,7 @@ class GetColorSuggestionsTest extends TestCase
     public function testColorSuggestions()
     {
         $api = new Api(new Client());
-        $result = $api->getColorSuggestions([[44,43,44],[90,83,82],"N","N","N"]);
+        $result = $api->getColorSuggestions([[44, 43, 44], [90, 83, 82], 'N', 'N', 'N']);
         $this->assertNotEmpty($result);
     }
 
